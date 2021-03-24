@@ -1,0 +1,49 @@
+DELIMITER '//'
+DROP DATABASE IF EXISTS cochesdaw //
+CREATE DATABASE cochesdaw //
+
+CREATE TABLE cochesdaw.usuario(
+id INT NOT NULL AUTO_INCREMENT,
+usuario VARCHAR(50) NOT NULL,
+passwd VARCHAR(1024) NOT NULL,
+tipoUsuario VARCHAR (10) NOT NULL,
+nombre VARCHAR(50),
+direccion VARCHAR(200),
+telefono VARCHAR(20),
+PRIMARY KEY(id)
+)ENGINE = INNODB;//
+
+CREATE TABLE cochesdaw.coche(
+id INT NOT NULL AUTO_INCREMENT,
+nombre VARCHAR(50) NOT NULL,
+descripcion VARCHAR(500) NOT NULL,
+marca VARCHAR(20) NOT NULL,
+modelo VARCHAR(30) NOT NULL,
+motor VARCHAR(20) NOT NULL,
+anyo VARCHAR(4) NOT NULL,
+precio DOUBLE NOT NULL,
+img VARCHAR(100) NOT NULL,
+PRIMARY KEY(id)
+)ENGINE = INNODB;//
+
+CREATE TABLE cochesdaw.stock(
+idCoche INT NOT NULL,
+unidades INT NOT NULL,
+FOREIGN KEY (idCoche) REFERENCES coche(id) ON DELETE CASCADE
+)ENGINE = INNODB;//
+
+CREATE TABLE cochesdaw.pedido(
+id INT NOT NULL AUTO_INCREMENT,
+idCliente INT NOT NULL,
+precioTotal DOUBLE NOT NULL,
+PRIMARY KEY (id),
+FOREIGN KEY (idCliente) REFERENCES usuario(id)
+)ENGINE = INNODB;//
+
+CREATE TABLE cochesdaw.lineapedido(
+idPedido INT NOT NULL,
+idCoche INT NOT NULL,
+precioCoche DOUBLE NOT NULL,
+FOREIGN KEY (idPedido) REFERENCES pedido(id),
+FOREIGN KEY (idCoche) REFERENCES coche(id)
+)ENGINE = INNODB;//
