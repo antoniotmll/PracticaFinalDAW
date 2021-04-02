@@ -4,7 +4,7 @@ CREATE DATABASE cochesdaw //
 
 CREATE TABLE cochesdaw.usuario(
 id INT NOT NULL AUTO_INCREMENT,
-usuario VARCHAR(50) NOT NULL,
+user VARCHAR(50) NOT NULL,
 passwd VARCHAR(1024) NOT NULL,
 tipoUsuario VARCHAR (10) NOT NULL,
 nombre VARCHAR(50),
@@ -28,16 +28,14 @@ PRIMARY KEY(id)
 
 CREATE TABLE cochesdaw.stock(
 idCoche INT NOT NULL,
-unidades INT NOT NULL,
-FOREIGN KEY (idCoche) REFERENCES coche(id) ON DELETE CASCADE
+unidades INT NOT NULL
 )ENGINE = INNODB;//
 
 CREATE TABLE cochesdaw.pedido(
 id INT NOT NULL AUTO_INCREMENT,
 idCliente INT NOT NULL,
 precioTotal DOUBLE NOT NULL,
-PRIMARY KEY (id),
-FOREIGN KEY (idCliente) REFERENCES usuario(id)
+PRIMARY KEY (id)
 )ENGINE = INNODB;//
 
 CREATE TABLE cochesdaw.lineapedido(
@@ -45,7 +43,5 @@ id INT NOT NULL AUTO_INCREMENT,
 idPedido INT NOT NULL,
 idCoche INT NOT NULL,
 precioCoche DOUBLE NOT NULL,
-PRIMARY KEY (id),
-FOREIGN KEY (idPedido) REFERENCES pedido(id),
-FOREIGN KEY (idCoche) REFERENCES coche(id)
+PRIMARY KEY (id)
 )ENGINE = INNODB;//

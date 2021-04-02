@@ -1,6 +1,6 @@
 DELIMITER '//'
 INSERT INTO cochesdaw.usuario
-(id, usuario, passwd, tipoUsuario, nombre, direccion, telefono)
+(id, user, passwd, tipoUsuario, nombre, direccion, telefono)
 VALUES
 (NULL, 'JuanitoX', 'secret', 'user', 'Juan Perez', 'dir eccion', '01234'),
 (NULL, 'mariavergara19', 'supersecret', 'user', 'Maria Vergara', 'dir accion', '04321'),

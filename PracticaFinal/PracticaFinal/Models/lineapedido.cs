@@ -18,8 +18,5 @@ namespace PracticaFinal.Models
         public int idPedido { get; set; }
         public int idCoche { get; set; }
         public double precioCoche { get; set; }
-    
-        public virtual coche coche { get; set; }
-        public virtual pedido pedido { get; set; }
     }
 }

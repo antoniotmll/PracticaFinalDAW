@@ -13,10 +13,10 @@ namespace PracticaFinal.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class cochesdawEntities2 : DbContext
+    public partial class cochesdawEntities6 : DbContext
     {
-        public cochesdawEntities2()
-            : base("name=cochesdawEntities2")
+        public cochesdawEntities6()
+            : base("name=cochesdawEntities6")
         {
         }
     
@@ -25,10 +25,10 @@ namespace PracticaFinal.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<coche> coche { get; set; }
-        public virtual DbSet<lineapedido> lineapedido { get; set; }
-        public virtual DbSet<pedido> pedido { get; set; }
-        public virtual DbSet<usuario> usuario { get; set; }
-        public virtual DbSet<stock> stock { get; set; }
+        public virtual DbSet<coche> coches { get; set; }
+        public virtual DbSet<lineapedido> lineapedidoes { get; set; }
+        public virtual DbSet<pedido> pedidoes { get; set; }
+        public virtual DbSet<usuario> usuarios { get; set; }
+        public virtual DbSet<stock> stocks { get; set; }
     }
 }

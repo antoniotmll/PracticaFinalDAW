@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="cochesdawModelStoreContainer" CdmEntityContainer="cochesdawEntities2">
-    <EntitySetMapping Name="coche">
+  <EntityContainerMapping StorageEntityContainer="cochesdawModelStoreContainer" CdmEntityContainer="cochesdawEntities6">
+    <EntitySetMapping Name="coches">
       <EntityTypeMapping TypeName="cochesdawModel.coche">
         <MappingFragment StoreEntitySet="coche">
           <ScalarProperty Name="id" ColumnName="id" />
@@ -16,7 +16,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="lineapedido">
+    <EntitySetMapping Name="lineapedidoes">
       <EntityTypeMapping TypeName="cochesdawModel.lineapedido">
         <MappingFragment StoreEntitySet="lineapedido">
           <ScalarProperty Name="id" ColumnName="id" />
@@ -26,7 +26,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="pedido">
+    <EntitySetMapping Name="pedidoes">
       <EntityTypeMapping TypeName="cochesdawModel.pedido">
         <MappingFragment StoreEntitySet="pedido">
           <ScalarProperty Name="id" ColumnName="id" />
@@ -35,11 +35,11 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="usuario">
+    <EntitySetMapping Name="usuarios">
       <EntityTypeMapping TypeName="cochesdawModel.usuario">
         <MappingFragment StoreEntitySet="usuario">
           <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="usuario1" ColumnName="usuario" />
+          <ScalarProperty Name="user" ColumnName="user" />
           <ScalarProperty Name="passwd" ColumnName="passwd" />
           <ScalarProperty Name="tipoUsuario" ColumnName="tipoUsuario" />
           <ScalarProperty Name="nombre" ColumnName="nombre" />
@@ -48,7 +48,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="stock">
+    <EntitySetMapping Name="stocks">
       <EntityTypeMapping TypeName="cochesdawModel.stock">
         <MappingFragment StoreEntitySet="stock">
           <ScalarProperty Name="idCoche" ColumnName="idCoche" />

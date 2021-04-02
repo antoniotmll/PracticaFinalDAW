@@ -14,18 +14,8 @@ namespace PracticaFinal.Models
     
     public partial class pedido
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public pedido()
-        {
-            this.lineapedido = new HashSet<lineapedido>();
-        }
-    
         public int id { get; set; }
         public int idCliente { get; set; }
         public double precioTotal { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<lineapedido> lineapedido { get; set; }
-        public virtual usuario usuario { get; set; }
     }
 }

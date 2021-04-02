@@ -46,63 +46,13 @@ advertencia 6002: La tabla o vista 'def.cochesdaw.stock' no tiene definida ningu
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="usuario" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="user" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="passwd" Type="varchar" MaxLength="1024" Nullable="false" />
     <Property Name="tipoUsuario" Type="varchar" MaxLength="10" Nullable="false" />
     <Property Name="nombre" Type="varchar" MaxLength="50" />
     <Property Name="direccion" Type="varchar" MaxLength="200" />
     <Property Name="telefono" Type="varchar" MaxLength="20" />
   </EntityType>
-  <Association Name="lineapedido_ibfk_1">
-    <End Role="pedido" Type="Self.pedido" Multiplicity="1" />
-    <End Role="lineapedido" Type="Self.lineapedido" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="pedido">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="lineapedido">
-        <PropertyRef Name="idPedido" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="lineapedido_ibfk_2">
-    <End Role="coche" Type="Self.coche" Multiplicity="1" />
-    <End Role="lineapedido" Type="Self.lineapedido" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="coche">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="lineapedido">
-        <PropertyRef Name="idCoche" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="pedido_ibfk_1">
-    <End Role="usuario" Type="Self.usuario" Multiplicity="1" />
-    <End Role="pedido" Type="Self.pedido" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="usuario">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="pedido">
-        <PropertyRef Name="idCliente" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="stock_ibfk_1">
-    <End Role="coche" Type="Self.coche" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="stock" Type="Self.stock" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="coche">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="stock">
-        <PropertyRef Name="idCoche" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityContainer Name="cochesdawModelStoreContainer">
     <EntitySet Name="coche" EntityType="Self.coche" Schema="cochesdaw" store:Type="Tables" />
     <EntitySet Name="lineapedido" EntityType="Self.lineapedido" Schema="cochesdaw" store:Type="Tables" />
@@ -114,21 +64,5 @@ advertencia 6002: La tabla o vista 'def.cochesdaw.stock' no tiene definida ningu
 `stock`.`unidades`
 FROM `stock` AS `stock`</DefiningQuery>
     </EntitySet>
-    <AssociationSet Name="lineapedido_ibfk_1" Association="Self.lineapedido_ibfk_1">
-      <End Role="pedido" EntitySet="pedido" />
-      <End Role="lineapedido" EntitySet="lineapedido" />
-    </AssociationSet>
-    <AssociationSet Name="lineapedido_ibfk_2" Association="Self.lineapedido_ibfk_2">
-      <End Role="coche" EntitySet="coche" />
-      <End Role="lineapedido" EntitySet="lineapedido" />
-    </AssociationSet>
-    <AssociationSet Name="pedido_ibfk_1" Association="Self.pedido_ibfk_1">
-      <End Role="usuario" EntitySet="usuario" />
-      <End Role="pedido" EntitySet="pedido" />
-    </AssociationSet>
-    <AssociationSet Name="stock_ibfk_1" Association="Self.stock_ibfk_1">
-      <End Role="coche" EntitySet="coche" />
-      <End Role="stock" EntitySet="stock" />
-    </AssociationSet>
   </EntityContainer>
 </Schema>

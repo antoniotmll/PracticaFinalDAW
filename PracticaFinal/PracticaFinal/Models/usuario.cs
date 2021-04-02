@@ -14,21 +14,12 @@ namespace PracticaFinal.Models
     
     public partial class usuario
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public usuario()
-        {
-            this.pedido = new HashSet<pedido>();
-        }
-    
         public int id { get; set; }
-        public string usuario1 { get; set; }
+        public string user { get; set; }
         public string passwd { get; set; }
         public string tipoUsuario { get; set; }
         public string nombre { get; set; }
         public string direccion { get; set; }
         public string telefono { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<pedido> pedido { get; set; }
     }
 }

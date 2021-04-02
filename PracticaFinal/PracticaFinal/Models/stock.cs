@@ -16,7 +16,5 @@ namespace PracticaFinal.Models
     {
         public int idCoche { get; set; }
         public int unidades { get; set; }
-    
-        public virtual coche coche { get; set; }
     }
 }
