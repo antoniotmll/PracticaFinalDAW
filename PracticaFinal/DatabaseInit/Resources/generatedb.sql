@@ -41,9 +41,11 @@ FOREIGN KEY (idCliente) REFERENCES usuario(id)
 )ENGINE = INNODB;//
 
 CREATE TABLE cochesdaw.lineapedido(
+id INT NOT NULL AUTO_INCREMENT,
 idPedido INT NOT NULL,
 idCoche INT NOT NULL,
 precioCoche DOUBLE NOT NULL,
+PRIMARY KEY (id),
 FOREIGN KEY (idPedido) REFERENCES pedido(id),
 FOREIGN KEY (idCoche) REFERENCES coche(id)
 )ENGINE = INNODB;//

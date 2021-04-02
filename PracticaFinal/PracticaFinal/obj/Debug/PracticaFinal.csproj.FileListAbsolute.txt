@@ -76,3 +76,11 @@ C:\Users\ZeroX\Desktop\Proyecto DAW\PracticaFinalDAW\PracticaFinal\PracticaFinal
 C:\Users\ZeroX\Desktop\Proyecto DAW\PracticaFinalDAW\PracticaFinal\PracticaFinal\obj\Debug\PracticaFinal.csproj.CopyComplete
 C:\Users\ZeroX\Desktop\Proyecto DAW\PracticaFinalDAW\PracticaFinal\PracticaFinal\obj\Debug\PracticaFinal.dll
 C:\Users\ZeroX\Desktop\Proyecto DAW\PracticaFinalDAW\PracticaFinal\PracticaFinal\obj\Debug\PracticaFinal.pdb
+C:\Users\ZeroX\Desktop\Proyecto DAW\PracticaFinalDAW\PracticaFinal\PracticaFinal\bin\EntityFramework.dll
+C:\Users\ZeroX\Desktop\Proyecto DAW\PracticaFinalDAW\PracticaFinal\PracticaFinal\bin\EntityFramework.SqlServer.dll
+C:\Users\ZeroX\Desktop\Proyecto DAW\PracticaFinalDAW\PracticaFinal\PracticaFinal\bin\MySql.Data.dll
+C:\Users\ZeroX\Desktop\Proyecto DAW\PracticaFinalDAW\PracticaFinal\PracticaFinal\bin\MySql.Data.Entity.EF6.dll
+C:\Users\ZeroX\Desktop\Proyecto DAW\PracticaFinalDAW\PracticaFinal\PracticaFinal\bin\EntityFramework.xml
+C:\Users\ZeroX\Desktop\Proyecto DAW\PracticaFinalDAW\PracticaFinal\PracticaFinal\bin\EntityFramework.SqlServer.xml
+C:\Users\ZeroX\Desktop\Proyecto DAW\PracticaFinalDAW\PracticaFinal\PracticaFinal\bin\MySql.Data.xml
+C:\Users\ZeroX\Desktop\Proyecto DAW\PracticaFinalDAW\PracticaFinal\PracticaFinal\bin\MySql.Data.Entity.EF6.xml
