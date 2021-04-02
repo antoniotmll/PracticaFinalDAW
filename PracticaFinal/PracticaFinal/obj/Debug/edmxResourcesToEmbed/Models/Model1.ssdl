@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="cochesdawModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="coche">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="marca" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="modelo" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="motor" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="anyo" Type="varchar" MaxLength="4" Nullable="false" />
+    <Property Name="precio" Type="double" Nullable="false" />
+    <Property Name="img" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="lineapedido">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idPedido" Type="int" Nullable="false" />
+    <Property Name="idCoche" Type="int" Nullable="false" />
+    <Property Name="precioCoche" Type="double" Nullable="false" />
+  </EntityType>
+  <EntityType Name="pedido">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idCliente" Type="int" Nullable="false" />
+    <Property Name="precioTotal" Type="double" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'def.cochesdaw.stock' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="stock">
+    <Key>
+      <PropertyRef Name="idCoche" />
+      <PropertyRef Name="unidades" />
+    </Key>
+    <Property Name="idCoche" Type="int" Nullable="false" />
+    <Property Name="unidades" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="usuario">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="usuario" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="passwd" Type="varchar" MaxLength="1024" Nullable="false" />
+    <Property Name="tipoUsuario" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="50" />
+    <Property Name="direccion" Type="varchar" MaxLength="200" />
+    <Property Name="telefono" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <Association Name="lineapedido_ibfk_1">
+    <End Role="pedido" Type="Self.pedido" Multiplicity="1" />
+    <End Role="lineapedido" Type="Self.lineapedido" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pedido">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="lineapedido">
+        <PropertyRef Name="idPedido" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="lineapedido_ibfk_2">
+    <End Role="coche" Type="Self.coche" Multiplicity="1" />
+    <End Role="lineapedido" Type="Self.lineapedido" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="coche">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="lineapedido">
+        <PropertyRef Name="idCoche" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="pedido_ibfk_1">
+    <End Role="usuario" Type="Self.usuario" Multiplicity="1" />
+    <End Role="pedido" Type="Self.pedido" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuario">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="pedido">
+        <PropertyRef Name="idCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="stock_ibfk_1">
+    <End Role="coche" Type="Self.coche" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="stock" Type="Self.stock" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="coche">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="stock">
+        <PropertyRef Name="idCoche" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="cochesdawModelStoreContainer">
+    <EntitySet Name="coche" EntityType="Self.coche" Schema="cochesdaw" store:Type="Tables" />
+    <EntitySet Name="lineapedido" EntityType="Self.lineapedido" Schema="cochesdaw" store:Type="Tables" />
+    <EntitySet Name="pedido" EntityType="Self.pedido" Schema="cochesdaw" store:Type="Tables" />
+    <EntitySet Name="usuario" EntityType="Self.usuario" Schema="cochesdaw" store:Type="Tables" />
+    <EntitySet Name="stock" EntityType="Self.stock" store:Type="Tables" store:Schema="cochesdaw">
+      <DefiningQuery>SELECT
+`stock`.`idCoche`, 
+`stock`.`unidades`
+FROM `stock` AS `stock`</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="lineapedido_ibfk_1" Association="Self.lineapedido_ibfk_1">
+      <End Role="pedido" EntitySet="pedido" />
+      <End Role="lineapedido" EntitySet="lineapedido" />
+    </AssociationSet>
+    <AssociationSet Name="lineapedido_ibfk_2" Association="Self.lineapedido_ibfk_2">
+      <End Role="coche" EntitySet="coche" />
+      <End Role="lineapedido" EntitySet="lineapedido" />
+    </AssociationSet>
+    <AssociationSet Name="pedido_ibfk_1" Association="Self.pedido_ibfk_1">
+      <End Role="usuario" EntitySet="usuario" />
+      <End Role="pedido" EntitySet="pedido" />
+    </AssociationSet>
+    <AssociationSet Name="stock_ibfk_1" Association="Self.stock_ibfk_1">
+      <End Role="coche" EntitySet="coche" />
+      <End Role="stock" EntitySet="stock" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -71,7 +71,6 @@ C:\Users\ZeroX\Desktop\Proyecto DAW\PracticaFinalDAW\PracticaFinal\PracticaFinal
 C:\Users\ZeroX\Desktop\Proyecto DAW\PracticaFinalDAW\PracticaFinal\PracticaFinal\bin\es\System.Web.Webpages.Razor.resources.dll
 C:\Users\ZeroX\Desktop\Proyecto DAW\PracticaFinalDAW\PracticaFinal\PracticaFinal\bin\es\System.Web.Helpers.resources.dll
 C:\Users\ZeroX\Desktop\Proyecto DAW\PracticaFinalDAW\PracticaFinal\PracticaFinal\bin\es\System.Web.Mvc.resources.dll
-C:\Users\ZeroX\Desktop\Proyecto DAW\PracticaFinalDAW\PracticaFinal\PracticaFinal\obj\Debug\PracticaFinal.csprojAssemblyReference.cache
 C:\Users\ZeroX\Desktop\Proyecto DAW\PracticaFinalDAW\PracticaFinal\PracticaFinal\obj\Debug\PracticaFinal.csproj.CoreCompileInputs.cache
 C:\Users\ZeroX\Desktop\Proyecto DAW\PracticaFinalDAW\PracticaFinal\PracticaFinal\obj\Debug\PracticaFinal.csproj.CopyComplete
 C:\Users\ZeroX\Desktop\Proyecto DAW\PracticaFinalDAW\PracticaFinal\PracticaFinal\obj\Debug\PracticaFinal.dll

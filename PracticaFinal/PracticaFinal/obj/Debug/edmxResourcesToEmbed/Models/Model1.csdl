@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="cochesdawModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="coche">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="descripcion" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="marca" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="modelo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="motor" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="anyo" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="precio" Type="Double" Nullable="false" />
+    <Property Name="img" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="lineapedido" Relationship="Self.lineapedido_ibfk_2" FromRole="coche" ToRole="lineapedido" />
+    <NavigationProperty Name="stock" Relationship="Self.stock_ibfk_1" FromRole="coche" ToRole="stock" />
+  </EntityType>
+  <EntityType Name="lineapedido">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idPedido" Type="Int32" Nullable="false" />
+    <Property Name="idCoche" Type="Int32" Nullable="false" />
+    <Property Name="precioCoche" Type="Double" Nullable="false" />
+    <NavigationProperty Name="coche" Relationship="Self.lineapedido_ibfk_2" FromRole="lineapedido" ToRole="coche" />
+    <NavigationProperty Name="pedido" Relationship="Self.lineapedido_ibfk_1" FromRole="lineapedido" ToRole="pedido" />
+  </EntityType>
+  <EntityType Name="pedido">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idCliente" Type="Int32" Nullable="false" />
+    <Property Name="precioTotal" Type="Double" Nullable="false" />
+    <NavigationProperty Name="lineapedido" Relationship="Self.lineapedido_ibfk_1" FromRole="pedido" ToRole="lineapedido" />
+    <NavigationProperty Name="usuario" Relationship="Self.pedido_ibfk_1" FromRole="pedido" ToRole="usuario" />
+  </EntityType>
+  <EntityType Name="usuario">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="usuario1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="passwd" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="tipoUsuario" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="direccion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="telefono" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="pedido" Relationship="Self.pedido_ibfk_1" FromRole="usuario" ToRole="pedido" />
+  </EntityType>
+  <EntityType Name="stock">
+    <Key>
+      <PropertyRef Name="idCoche" />
+      <PropertyRef Name="unidades" />
+    </Key>
+    <Property Name="idCoche" Type="Int32" Nullable="false" />
+    <Property Name="unidades" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="coche" Relationship="Self.stock_ibfk_1" FromRole="stock" ToRole="coche" />
+  </EntityType>
+  <Association Name="lineapedido_ibfk_2">
+    <End Role="coche" Type="Self.coche" Multiplicity="1" />
+    <End Role="lineapedido" Type="Self.lineapedido" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="coche">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="lineapedido">
+        <PropertyRef Name="idCoche" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="stock_ibfk_1">
+    <End Role="coche" Type="Self.coche" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="stock" Type="Self.stock" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="coche">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="stock">
+        <PropertyRef Name="idCoche" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="lineapedido_ibfk_1">
+    <End Role="pedido" Type="Self.pedido" Multiplicity="1" />
+    <End Role="lineapedido" Type="Self.lineapedido" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pedido">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="lineapedido">
+        <PropertyRef Name="idPedido" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="pedido_ibfk_1">
+    <End Role="usuario" Type="Self.usuario" Multiplicity="1" />
+    <End Role="pedido" Type="Self.pedido" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuario">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="pedido">
+        <PropertyRef Name="idCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="cochesdawEntities2" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="coche" EntityType="Self.coche" />
+    <EntitySet Name="lineapedido" EntityType="Self.lineapedido" />
+    <EntitySet Name="pedido" EntityType="Self.pedido" />
+    <EntitySet Name="usuario" EntityType="Self.usuario" />
+    <EntitySet Name="stock" EntityType="Self.stock" />
+    <AssociationSet Name="lineapedido_ibfk_2" Association="Self.lineapedido_ibfk_2">
+      <End Role="coche" EntitySet="coche" />
+      <End Role="lineapedido" EntitySet="lineapedido" />
+    </AssociationSet>
+    <AssociationSet Name="stock_ibfk_1" Association="Self.stock_ibfk_1">
+      <End Role="coche" EntitySet="coche" />
+      <End Role="stock" EntitySet="stock" />
+    </AssociationSet>
+    <AssociationSet Name="lineapedido_ibfk_1" Association="Self.lineapedido_ibfk_1">
+      <End Role="pedido" EntitySet="pedido" />
+      <End Role="lineapedido" EntitySet="lineapedido" />
+    </AssociationSet>
+    <AssociationSet Name="pedido_ibfk_1" Association="Self.pedido_ibfk_1">
+      <End Role="usuario" EntitySet="usuario" />
+      <End Role="pedido" EntitySet="pedido" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
