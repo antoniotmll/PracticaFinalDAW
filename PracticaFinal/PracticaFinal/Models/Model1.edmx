@@ -36,12 +36,9 @@
           <Property Name="idCliente" Type="int" Nullable="false" />
           <Property Name="precioTotal" Type="double" Nullable="false" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'def.cochesdaw.stock' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="stock">
           <Key>
             <PropertyRef Name="idCoche" />
-            <PropertyRef Name="unidades" />
           </Key>
           <Property Name="idCoche" Type="int" Nullable="false" />
           <Property Name="unidades" Type="int" Nullable="false" />
@@ -62,13 +59,8 @@ advertencia 6002: La tabla o vista 'def.cochesdaw.stock' no tiene definida ningu
           <EntitySet Name="coche" EntityType="Self.coche" Schema="cochesdaw" store:Type="Tables" />
           <EntitySet Name="lineapedido" EntityType="Self.lineapedido" Schema="cochesdaw" store:Type="Tables" />
           <EntitySet Name="pedido" EntityType="Self.pedido" Schema="cochesdaw" store:Type="Tables" />
+          <EntitySet Name="stock" EntityType="Self.stock" Schema="cochesdaw" store:Type="Tables" />
           <EntitySet Name="usuario" EntityType="Self.usuario" Schema="cochesdaw" store:Type="Tables" />
-          <EntitySet Name="stock" EntityType="Self.stock" store:Type="Tables" store:Schema="cochesdaw">
-            <DefiningQuery>SELECT
-`stock`.`idCoche`, 
-`stock`.`unidades`
-FROM `stock` AS `stock`</DefiningQuery>
-          </EntitySet>
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
@@ -106,6 +98,13 @@ FROM `stock` AS `stock`</DefiningQuery>
           <Property Name="idCliente" Type="Int32" Nullable="false" />
           <Property Name="precioTotal" Type="Double" Nullable="false" />
         </EntityType>
+        <EntityType Name="stock">
+          <Key>
+            <PropertyRef Name="idCoche" />
+          </Key>
+          <Property Name="idCoche" Type="Int32" Nullable="false" />
+          <Property Name="unidades" Type="Int32" Nullable="false" />
+        </EntityType>
         <EntityType Name="usuario">
           <Key>
             <PropertyRef Name="id" />
@@ -118,27 +117,19 @@ FROM `stock` AS `stock`</DefiningQuery>
           <Property Name="direccion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="telefono" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="stock">
-          <Key>
-            <PropertyRef Name="idCoche" />
-            <PropertyRef Name="unidades" />
-          </Key>
-          <Property Name="idCoche" Type="Int32" Nullable="false" />
-          <Property Name="unidades" Type="Int32" Nullable="false" />
-        </EntityType>
-        <EntityContainer Name="cochesdawEntities6" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="cochesdawEntities7" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="coches" EntityType="Self.coche" />
           <EntitySet Name="lineapedidoes" EntityType="Self.lineapedido" />
           <EntitySet Name="pedidoes" EntityType="Self.pedido" />
-          <EntitySet Name="usuarios" EntityType="Self.usuario" />
           <EntitySet Name="stocks" EntityType="Self.stock" />
+          <EntitySet Name="usuarios" EntityType="Self.usuario" />
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="cochesdawModelStoreContainer" CdmEntityContainer="cochesdawEntities6">
+        <EntityContainerMapping StorageEntityContainer="cochesdawModelStoreContainer" CdmEntityContainer="cochesdawEntities7">
           <EntitySetMapping Name="coches">
             <EntityTypeMapping TypeName="cochesdawModel.coche">
               <MappingFragment StoreEntitySet="coche">
@@ -173,6 +164,14 @@ FROM `stock` AS `stock`</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="stocks">
+            <EntityTypeMapping TypeName="cochesdawModel.stock">
+              <MappingFragment StoreEntitySet="stock">
+                <ScalarProperty Name="idCoche" ColumnName="idCoche" />
+                <ScalarProperty Name="unidades" ColumnName="unidades" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="usuarios">
             <EntityTypeMapping TypeName="cochesdawModel.usuario">
               <MappingFragment StoreEntitySet="usuario">
@@ -183,14 +182,6 @@ FROM `stock` AS `stock`</DefiningQuery>
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="direccion" ColumnName="direccion" />
                 <ScalarProperty Name="telefono" ColumnName="telefono" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="stocks">
-            <EntityTypeMapping TypeName="cochesdawModel.stock">
-              <MappingFragment StoreEntitySet="stock">
-                <ScalarProperty Name="idCoche" ColumnName="idCoche" />
-                <ScalarProperty Name="unidades" ColumnName="unidades" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

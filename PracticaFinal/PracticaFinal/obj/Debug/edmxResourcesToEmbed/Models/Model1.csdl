@@ -31,6 +31,13 @@
     <Property Name="idCliente" Type="Int32" Nullable="false" />
     <Property Name="precioTotal" Type="Double" Nullable="false" />
   </EntityType>
+  <EntityType Name="stock">
+    <Key>
+      <PropertyRef Name="idCoche" />
+    </Key>
+    <Property Name="idCoche" Type="Int32" Nullable="false" />
+    <Property Name="unidades" Type="Int32" Nullable="false" />
+  </EntityType>
   <EntityType Name="usuario">
     <Key>
       <PropertyRef Name="id" />
@@ -43,19 +50,11 @@
     <Property Name="direccion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
     <Property Name="telefono" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
   </EntityType>
-  <EntityType Name="stock">
-    <Key>
-      <PropertyRef Name="idCoche" />
-      <PropertyRef Name="unidades" />
-    </Key>
-    <Property Name="idCoche" Type="Int32" Nullable="false" />
-    <Property Name="unidades" Type="Int32" Nullable="false" />
-  </EntityType>
-  <EntityContainer Name="cochesdawEntities6" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="cochesdawEntities7" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="coches" EntityType="Self.coche" />
     <EntitySet Name="lineapedidoes" EntityType="Self.lineapedido" />
     <EntitySet Name="pedidoes" EntityType="Self.pedido" />
-    <EntitySet Name="usuarios" EntityType="Self.usuario" />
     <EntitySet Name="stocks" EntityType="Self.stock" />
+    <EntitySet Name="usuarios" EntityType="Self.usuario" />
   </EntityContainer>
 </Schema>

@@ -12,48 +12,49 @@ using PracticaFinal.Models;
 
 namespace PracticaFinal.Controllers
 {
-    public class UsuarioController : ApiController
+    public class StockController : ApiController
     {
         private cochesdawEntities7 db = new cochesdawEntities7();
-        // GET: api/usuario
-        public IQueryable<usuario> GetLists()
+        // GET: api/stock
+        public IQueryable<stock> GetLists()
         {
-            return db.usuarios;
+            return db.stocks;
         }
 
-        // GET: api/usuario/5
-        [ResponseType(typeof(usuario))]
+        // GET: api/stock/5
+        [ResponseType(typeof(stock))]
         public IHttpActionResult GetLists(decimal id)
         {
-            usuario usuarios = db.usuarios.Find(id);
-            if (usuarios == null)
+            List<stock> stock = new List<stock>();
+            stock = db.Database.SqlQuery<stock>("select * from stock where idCoche like {0}",
+                id).ToList();
+            if (stock.Count == 0)
             {
                 return NotFound();
             }
-
-            return Ok(usuarios);
+            return Ok(stock);
         }
 
-        // PUT: api/usuario/5
+        // PUT: api/stock/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutLists(decimal id, usuario usuario)
+        public IHttpActionResult PutLists(decimal id, stock stock)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != usuario.id)
+            if (id != stock.idCoche)
             {
                 return BadRequest();
             }
 
-            db.Entry(usuario).State = EntityState.Modified;
+            db.Entry(stock).State = EntityState.Modified;
 
             try
             {
-                string sql = String.Format("update usuario set user = '{0}', passwd = '{1}',  tipoUsuario = '{2}', nombre = '{3}', direccion = '{4}', telefono = '{5}' where id like {6}",
-                usuario.user, usuario.passwd, usuario.tipoUsuario, usuario.nombre, usuario.direccion, usuario.telefono, id);
+                string sql = String.Format("update stock set unidades = '{0}' where idCoche like {1}",
+                stock.unidades, id);
                 db.Database.ExecuteSqlCommand(sql);
                 //db.SaveChanges();
             }
@@ -72,38 +73,45 @@ namespace PracticaFinal.Controllers
             return StatusCode(HttpStatusCode.OK);
         }
 
-        // POST: api/usuario
-        [ResponseType(typeof(usuario))]
-        public IHttpActionResult PostLists(usuario usuario)
+        // POST: api/stock
+        [ResponseType(typeof(stock))]
+        public IHttpActionResult PostLists(stock stock)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            string sql = String.Format("insert into usuario (user, passwd, tipoUsuario, nombre, direccion, telefono) values ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}')",
-                usuario.user, usuario.passwd, usuario.tipoUsuario, usuario.nombre, usuario.direccion, usuario.telefono);
-            db.Database.ExecuteSqlCommand(sql);
+            string sql = String.Format("insert into stock (idCoche, unidades) values ('{0}', '{1}')",
+                stock.idCoche, stock.unidades);
+            try
+            {
+                db.Database.ExecuteSqlCommand(sql);
+            }
+            catch(MySql.Data.MySqlClient.MySqlException e)
+            {
+                return BadRequest(e.Message);
+            }
 
-            //db.usuario.Add(usuarios);
+            //db.stock.Add(stocks);
             //db.SaveChanges();
-            return CreatedAtRoute("DefaultApi", new { id = usuario.id }, usuario);
+            return CreatedAtRoute("DefaultApi", new { id = stock.idCoche }, stock);
         }
 
-        // DELETE: api/usuario/5
-        [ResponseType(typeof(usuario))]
+        // DELETE: api/stock/5
+        [ResponseType(typeof(stock))]
         public IHttpActionResult DeleteLists(decimal id)
         {
-            usuario usuarios = db.usuarios.Find(id);
-            if (usuarios == null)
+            stock stocks = db.stocks.Find(id);
+            if (stocks == null)
             {
                 return NotFound();
             }
 
-            db.usuarios.Remove(usuarios);
+            db.stocks.Remove(stocks);
             db.SaveChanges();
 
-            return Ok(usuarios);
+            return Ok(stocks);
         }
 
         protected override void Dispose(bool disposing)
@@ -117,7 +125,7 @@ namespace PracticaFinal.Controllers
 
         private bool ListsExists(decimal id)
         {
-            return db.usuarios.Count(e => e.id == id) > 0;
+            return db.stocks.Count(e => e.idCoche == id) > 0;
         }
     }
 }

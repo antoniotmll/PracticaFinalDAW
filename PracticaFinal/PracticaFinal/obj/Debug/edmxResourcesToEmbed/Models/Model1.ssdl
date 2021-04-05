@@ -31,12 +31,9 @@
     <Property Name="idCliente" Type="int" Nullable="false" />
     <Property Name="precioTotal" Type="double" Nullable="false" />
   </EntityType>
-  <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'def.cochesdaw.stock' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
   <EntityType Name="stock">
     <Key>
       <PropertyRef Name="idCoche" />
-      <PropertyRef Name="unidades" />
     </Key>
     <Property Name="idCoche" Type="int" Nullable="false" />
     <Property Name="unidades" Type="int" Nullable="false" />
@@ -57,12 +54,7 @@ advertencia 6002: La tabla o vista 'def.cochesdaw.stock' no tiene definida ningu
     <EntitySet Name="coche" EntityType="Self.coche" Schema="cochesdaw" store:Type="Tables" />
     <EntitySet Name="lineapedido" EntityType="Self.lineapedido" Schema="cochesdaw" store:Type="Tables" />
     <EntitySet Name="pedido" EntityType="Self.pedido" Schema="cochesdaw" store:Type="Tables" />
+    <EntitySet Name="stock" EntityType="Self.stock" Schema="cochesdaw" store:Type="Tables" />
     <EntitySet Name="usuario" EntityType="Self.usuario" Schema="cochesdaw" store:Type="Tables" />
-    <EntitySet Name="stock" EntityType="Self.stock" store:Type="Tables" store:Schema="cochesdaw">
-      <DefiningQuery>SELECT
-`stock`.`idCoche`, 
-`stock`.`unidades`
-FROM `stock` AS `stock`</DefiningQuery>
-    </EntitySet>
   </EntityContainer>
 </Schema>

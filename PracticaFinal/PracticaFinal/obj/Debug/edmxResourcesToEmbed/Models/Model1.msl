@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="cochesdawModelStoreContainer" CdmEntityContainer="cochesdawEntities6">
+  <EntityContainerMapping StorageEntityContainer="cochesdawModelStoreContainer" CdmEntityContainer="cochesdawEntities7">
     <EntitySetMapping Name="coches">
       <EntityTypeMapping TypeName="cochesdawModel.coche">
         <MappingFragment StoreEntitySet="coche">
@@ -35,6 +35,14 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="stocks">
+      <EntityTypeMapping TypeName="cochesdawModel.stock">
+        <MappingFragment StoreEntitySet="stock">
+          <ScalarProperty Name="idCoche" ColumnName="idCoche" />
+          <ScalarProperty Name="unidades" ColumnName="unidades" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="usuarios">
       <EntityTypeMapping TypeName="cochesdawModel.usuario">
         <MappingFragment StoreEntitySet="usuario">
@@ -45,14 +53,6 @@
           <ScalarProperty Name="nombre" ColumnName="nombre" />
           <ScalarProperty Name="direccion" ColumnName="direccion" />
           <ScalarProperty Name="telefono" ColumnName="telefono" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="stocks">
-      <EntityTypeMapping TypeName="cochesdawModel.stock">
-        <MappingFragment StoreEntitySet="stock">
-          <ScalarProperty Name="idCoche" ColumnName="idCoche" />
-          <ScalarProperty Name="unidades" ColumnName="unidades" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

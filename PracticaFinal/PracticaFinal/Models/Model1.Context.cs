@@ -13,10 +13,10 @@ namespace PracticaFinal.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class cochesdawEntities6 : DbContext
+    public partial class cochesdawEntities7 : DbContext
     {
-        public cochesdawEntities6()
-            : base("name=cochesdawEntities6")
+        public cochesdawEntities7()
+            : base("name=cochesdawEntities7")
         {
         }
     
@@ -28,7 +28,7 @@ namespace PracticaFinal.Models
         public virtual DbSet<coche> coches { get; set; }
         public virtual DbSet<lineapedido> lineapedidoes { get; set; }
         public virtual DbSet<pedido> pedidoes { get; set; }
-        public virtual DbSet<usuario> usuarios { get; set; }
         public virtual DbSet<stock> stocks { get; set; }
+        public virtual DbSet<usuario> usuarios { get; set; }
     }
 }

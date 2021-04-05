@@ -14,7 +14,7 @@ namespace PracticaFinal.Controllers
 {
     public class CocheController : ApiController
     {
-        private cochesdawEntities6 db = new cochesdawEntities6();
+        private cochesdawEntities7 db = new cochesdawEntities7();
         // GET: api/coche
         public IQueryable<coche> GetLists()
         {

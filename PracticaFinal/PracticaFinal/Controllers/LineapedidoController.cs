@@ -12,48 +12,42 @@ using PracticaFinal.Models;
 
 namespace PracticaFinal.Controllers
 {
-    public class UsuarioController : ApiController
+    public class LineapedidoController : ApiController
     {
         private cochesdawEntities7 db = new cochesdawEntities7();
-        // GET: api/usuario
-        public IQueryable<usuario> GetLists()
-        {
-            return db.usuarios;
-        }
-
-        // GET: api/usuario/5
-        [ResponseType(typeof(usuario))]
+        // GET: api/lineapedido
         public IHttpActionResult GetLists(decimal id)
         {
-            usuario usuarios = db.usuarios.Find(id);
-            if (usuarios == null)
+            List<lineapedido> lineas = new List<lineapedido>();
+            lineas = db.Database.SqlQuery<lineapedido>("select * from lineapedido where idPedido like {0}", 
+                id).ToList();
+            if (lineas.Count == 0)
             {
                 return NotFound();
             }
-
-            return Ok(usuarios);
+            return Ok (lineas);
         }
 
-        // PUT: api/usuario/5
+        // PUT: api/lineapedido/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutLists(decimal id, usuario usuario)
+        public IHttpActionResult PutLists(decimal id, lineapedido lineapedido)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != usuario.id)
+            if (id != lineapedido.id)
             {
                 return BadRequest();
             }
 
-            db.Entry(usuario).State = EntityState.Modified;
+            db.Entry(lineapedido).State = EntityState.Modified;
 
             try
             {
-                string sql = String.Format("update usuario set user = '{0}', passwd = '{1}',  tipoUsuario = '{2}', nombre = '{3}', direccion = '{4}', telefono = '{5}' where id like {6}",
-                usuario.user, usuario.passwd, usuario.tipoUsuario, usuario.nombre, usuario.direccion, usuario.telefono, id);
+                string sql = String.Format("update lineapedido set idPedido = '{0}', idCoche = '{1}', precioCoche = '{2}' where id like {3}",
+                lineapedido.idPedido, lineapedido.idCoche, lineapedido.precioCoche, id);
                 db.Database.ExecuteSqlCommand(sql);
                 //db.SaveChanges();
             }
@@ -72,38 +66,38 @@ namespace PracticaFinal.Controllers
             return StatusCode(HttpStatusCode.OK);
         }
 
-        // POST: api/usuario
-        [ResponseType(typeof(usuario))]
-        public IHttpActionResult PostLists(usuario usuario)
+        // POST: api/lineapedido
+        [ResponseType(typeof(lineapedido))]
+        public IHttpActionResult PostLists(lineapedido lineapedido)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            string sql = String.Format("insert into usuario (user, passwd, tipoUsuario, nombre, direccion, telefono) values ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}')",
-                usuario.user, usuario.passwd, usuario.tipoUsuario, usuario.nombre, usuario.direccion, usuario.telefono);
+            string sql = String.Format("insert into lineapedido (idPedido, idCoche, precioCoche) values ('{0}', '{1}', '{2}')",
+                lineapedido.idPedido, lineapedido.idCoche, lineapedido.precioCoche);
             db.Database.ExecuteSqlCommand(sql);
 
-            //db.usuario.Add(usuarios);
+            //db.lineapedido.Add(lineapedidos);
             //db.SaveChanges();
-            return CreatedAtRoute("DefaultApi", new { id = usuario.id }, usuario);
+            return CreatedAtRoute("DefaultApi", new { id = lineapedido.id }, lineapedido);
         }
 
-        // DELETE: api/usuario/5
-        [ResponseType(typeof(usuario))]
+        // DELETE: api/lineapedido/5
+        [ResponseType(typeof(lineapedido))]
         public IHttpActionResult DeleteLists(decimal id)
         {
-            usuario usuarios = db.usuarios.Find(id);
-            if (usuarios == null)
+            lineapedido lineapedidos = db.lineapedidoes.Find(id);
+            if (lineapedidos == null)
             {
                 return NotFound();
             }
 
-            db.usuarios.Remove(usuarios);
+            db.lineapedidoes.Remove(lineapedidos);
             db.SaveChanges();
 
-            return Ok(usuarios);
+            return Ok(lineapedidos);
         }
 
         protected override void Dispose(bool disposing)
@@ -117,7 +111,7 @@ namespace PracticaFinal.Controllers
 
         private bool ListsExists(decimal id)
         {
-            return db.usuarios.Count(e => e.id == id) > 0;
+            return db.lineapedidoes.Count(e => e.id == id) > 0;
         }
     }
 }

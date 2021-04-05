@@ -12,48 +12,49 @@ using PracticaFinal.Models;
 
 namespace PracticaFinal.Controllers
 {
-    public class UsuarioController : ApiController
+    public class PedidoController : ApiController
     {
         private cochesdawEntities7 db = new cochesdawEntities7();
-        // GET: api/usuario
-        public IQueryable<usuario> GetLists()
+        // GET: api/pedido
+        public IQueryable<pedido> GetLists()
         {
-            return db.usuarios;
+            return db.pedidoes;
         }
 
-        // GET: api/usuario/5
-        [ResponseType(typeof(usuario))]
+        // GET: api/pedido/5
+        [ResponseType(typeof(pedido))]
         public IHttpActionResult GetLists(decimal id)
         {
-            usuario usuarios = db.usuarios.Find(id);
-            if (usuarios == null)
+            List<pedido> pedidos = new List<pedido>();
+            pedidos = db.Database.SqlQuery<pedido>("select * from pedido where idCliente like {0}",
+                id).ToList();
+            if (pedidos.Count == 0)
             {
                 return NotFound();
             }
-
-            return Ok(usuarios);
+            return Ok(pedidos);
         }
 
-        // PUT: api/usuario/5
+        // PUT: api/pedido/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutLists(decimal id, usuario usuario)
+        public IHttpActionResult PutLists(decimal id, pedido pedido)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != usuario.id)
+            if (id != pedido.id)
             {
                 return BadRequest();
             }
 
-            db.Entry(usuario).State = EntityState.Modified;
+            db.Entry(pedido).State = EntityState.Modified;
 
             try
             {
-                string sql = String.Format("update usuario set user = '{0}', passwd = '{1}',  tipoUsuario = '{2}', nombre = '{3}', direccion = '{4}', telefono = '{5}' where id like {6}",
-                usuario.user, usuario.passwd, usuario.tipoUsuario, usuario.nombre, usuario.direccion, usuario.telefono, id);
+                string sql = String.Format("update pedido set idCliente = '{0}', precioTotal = '{1}' where id like {2}",
+                pedido.idCliente, pedido.precioTotal, id);
                 db.Database.ExecuteSqlCommand(sql);
                 //db.SaveChanges();
             }
@@ -72,38 +73,38 @@ namespace PracticaFinal.Controllers
             return StatusCode(HttpStatusCode.OK);
         }
 
-        // POST: api/usuario
-        [ResponseType(typeof(usuario))]
-        public IHttpActionResult PostLists(usuario usuario)
+        // POST: api/pedido
+        [ResponseType(typeof(pedido))]
+        public IHttpActionResult PostLists(pedido pedido)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            string sql = String.Format("insert into usuario (user, passwd, tipoUsuario, nombre, direccion, telefono) values ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}')",
-                usuario.user, usuario.passwd, usuario.tipoUsuario, usuario.nombre, usuario.direccion, usuario.telefono);
+            string sql = String.Format("insert into pedido (idCliente, precioTotal) values ('{0}', '{1}')",
+                pedido.idCliente, pedido.precioTotal);
             db.Database.ExecuteSqlCommand(sql);
 
-            //db.usuario.Add(usuarios);
+            //db.pedido.Add(pedidos);
             //db.SaveChanges();
-            return CreatedAtRoute("DefaultApi", new { id = usuario.id }, usuario);
+            return CreatedAtRoute("DefaultApi", new { id = pedido.id }, pedido);
         }
 
-        // DELETE: api/usuario/5
-        [ResponseType(typeof(usuario))]
+        // DELETE: api/pedido/5
+        [ResponseType(typeof(pedido))]
         public IHttpActionResult DeleteLists(decimal id)
         {
-            usuario usuarios = db.usuarios.Find(id);
-            if (usuarios == null)
+            pedido pedidos = db.pedidoes.Find(id);
+            if (pedidos == null)
             {
                 return NotFound();
             }
 
-            db.usuarios.Remove(usuarios);
+            db.pedidoes.Remove(pedidos);
             db.SaveChanges();
 
-            return Ok(usuarios);
+            return Ok(pedidos);
         }
 
         protected override void Dispose(bool disposing)
@@ -117,7 +118,7 @@ namespace PracticaFinal.Controllers
 
         private bool ListsExists(decimal id)
         {
-            return db.usuarios.Count(e => e.id == id) > 0;
+            return db.pedidoes.Count(e => e.id == id) > 0;
         }
     }
 }

@@ -28,7 +28,8 @@ PRIMARY KEY(id)
 
 CREATE TABLE cochesdaw.stock(
 idCoche INT NOT NULL,
-unidades INT NOT NULL
+unidades INT NOT NULL,
+PRIMARY KEY (idCoche)
 )ENGINE = INNODB;//
 
 CREATE TABLE cochesdaw.pedido(
