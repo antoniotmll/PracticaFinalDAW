@@ -4,7 +4,6 @@ C:\Users\ZeroX\Desktop\Proyecto DAW\PracticaFinalDAW\PracticaFinal\DatabaseInit\
 C:\Users\ZeroX\Desktop\Proyecto DAW\PracticaFinalDAW\PracticaFinal\DatabaseInit\bin\Debug\netcoreapp3.1\DatabaseInit.runtimeconfig.dev.json
 C:\Users\ZeroX\Desktop\Proyecto DAW\PracticaFinalDAW\PracticaFinal\DatabaseInit\bin\Debug\netcoreapp3.1\DatabaseInit.dll
 C:\Users\ZeroX\Desktop\Proyecto DAW\PracticaFinalDAW\PracticaFinal\DatabaseInit\bin\Debug\netcoreapp3.1\DatabaseInit.pdb
-C:\Users\ZeroX\Desktop\Proyecto DAW\PracticaFinalDAW\PracticaFinal\DatabaseInit\obj\Debug\netcoreapp3.1\DatabaseInit.csprojAssemblyReference.cache
 C:\Users\ZeroX\Desktop\Proyecto DAW\PracticaFinalDAW\PracticaFinal\DatabaseInit\obj\Debug\netcoreapp3.1\DatabaseInit.AssemblyInfoInputs.cache
 C:\Users\ZeroX\Desktop\Proyecto DAW\PracticaFinalDAW\PracticaFinal\DatabaseInit\obj\Debug\netcoreapp3.1\DatabaseInit.AssemblyInfo.cs
 C:\Users\ZeroX\Desktop\Proyecto DAW\PracticaFinalDAW\PracticaFinal\DatabaseInit\obj\Debug\netcoreapp3.1\DatabaseInit.csproj.CoreCompileInputs.cache
@@ -13,3 +12,4 @@ C:\Users\ZeroX\Desktop\Proyecto DAW\PracticaFinalDAW\PracticaFinal\DatabaseInit\
 C:\Users\ZeroX\Desktop\Proyecto DAW\PracticaFinalDAW\PracticaFinal\DatabaseInit\obj\Debug\netcoreapp3.1\DatabaseInit.genruntimeconfig.cache
 C:\Users\ZeroX\Desktop\Proyecto DAW\PracticaFinalDAW\PracticaFinal\DatabaseInit\obj\Debug\netcoreapp3.1\DatabaseInit.Properties.Resources.resources
 C:\Users\ZeroX\Desktop\Proyecto DAW\PracticaFinalDAW\PracticaFinal\DatabaseInit\obj\Debug\netcoreapp3.1\DatabaseInit.csproj.GenerateResource.cache
+C:\Users\ZeroX\Desktop\Proyecto DAW\PracticaFinalDAW\PracticaFinal\DatabaseInit\obj\Debug\netcoreapp3.1\DatabaseInit.csprojAssemblyReference.cache

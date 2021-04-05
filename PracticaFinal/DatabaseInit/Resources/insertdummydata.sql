@@ -1,6 +1,6 @@
 DELIMITER '//'
 INSERT INTO cochesdaw.usuario
-(id, usuario, passwd, tipoUsuario, nombre, direccion, telefono)
+(id, user, passwd, tipoUsuario, nombre, direccion, telefono)
 VALUES
 (NULL, 'JuanitoX', 'secret', 'user', 'Juan Perez', 'dir eccion', '01234'),
 (NULL, 'mariavergara19', 'supersecret', 'user', 'Maria Vergara', 'dir accion', '04321'),
@@ -34,10 +34,10 @@ VALUES
 (NULL, 2, 140000)
 //
 INSERT INTO cochesdaw.lineapedido
-(idPedido, idCoche, precioCoche)
+(id, idPedido, idCoche, precioCoche)
 VALUES
-(1, 3, 48000),
-(1, 6, 36000),
-(2, 4, 69000),
-(3, 2, 140000)
+(NULL, 1, 3, 48000),
+(NULL, 1, 6, 36000),
+(NULL, 2, 4, 69000),
+(NULL, 3, 2, 140000)
 //
