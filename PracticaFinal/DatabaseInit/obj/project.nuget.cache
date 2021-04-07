@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "iHSOdsVtUE/CsPXC7T0VJdUogcXNdWy425m5MHlylvDEHgbgWvdeLZA/ni5nCuRBM6yObXOmpsIzpyyLlkp6/A==",
+  "dgSpecHash": "6sqM61/OThSy+U9EA2o77X0HBgbAXnXl4HtKRnUDGGYifI0yR2qW10RrcxhGc1PQcyhPnTq+1owHhopP3sdvKQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ZeroX\\Desktop\\Proyecto DAW\\PracticaFinalDAW\\PracticaFinal\\DatabaseInit\\DatabaseInit.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\Antonio\\Desktop\\Máster Web\\Desarrollo de aplicaciones web\\Practica Final\\PracticaFinalDAW\\PracticaFinal\\DatabaseInit\\DatabaseInit.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Antonio\\.nuget\\packages\\microsoft.netcore.app.host.win-x86\\3.1.12\\microsoft.netcore.app.host.win-x86.3.1.12.nupkg.sha512",
+    "C:\\Users\\Antonio\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.10\\microsoft.aspnetcore.app.ref.3.1.10.nupkg.sha512",
+    "C:\\Users\\Antonio\\.nuget\\packages\\microsoft.netcore.app.ref\\3.1.0\\microsoft.netcore.app.ref.3.1.0.nupkg.sha512",
+    "C:\\Users\\Antonio\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\3.1.0\\microsoft.windowsdesktop.app.ref.3.1.0.nupkg.sha512"
+  ],
   "logs": []
 }
