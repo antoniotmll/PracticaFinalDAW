@@ -16,3 +16,64 @@ textarea {
     max-width: 280px;
 }
 
+#video {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    max-width: 100%;
+    opacity: 0.2;
+}
+
+#titulo {
+    padding-top: 40px;
+    padding-bottom: 60px;
+    text-align: center;
+    font-size: 50px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+#titulo2 {
+    text-align: center;
+    font-size: 50px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+#filaferrari {
+    padding-bottom: 40px;
+}
+
+#textoFerrari {
+    padding-top: 60px;
+}
+
+#imgferrari {
+    height: 300px;
+}
+
+#imgwilliams {
+    height: 230px;
+}
+
+#coche {
+    text-align: center;
+    font-size: 40px;
+    height: 75px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+#descripcion {
+    text-align: center;
+    font-size: 20px;
+    height: 50px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+#tarjeta {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.dropdown {
+    text-align: center;
+}

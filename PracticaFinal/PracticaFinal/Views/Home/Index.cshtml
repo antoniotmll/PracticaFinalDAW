@@ -1,7 +1,83 @@
-﻿
-@{
-    ViewBag.Title = "Index";
-}
+﻿<div class="container">
 
-<h2>Index</h2>
+    <section>
+        <div class="row">
+            <div class="col-12">
+                <video id="video" playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+                    <source src="~/assets/video.mp4" type="video/mp4" />
+                </video>
+            </div>
+        </div>
+    </section>
 
+    <section>
+        <div class="row">
+            <div id="titulo" class="col-12">
+                Los más vendidos
+            </div>
+        </div>
+
+        <div id="filaferrari" class="row">
+            <div class="col-md-12 col-lg-8">
+                <img id="imgferrari" src="~/assets/img/f1ferrari.png">
+            </div>
+            <div id="textoFerrari" class="col-md-12 col-lg-4">
+                <div id="coche" class="row">
+                    <div class="col-12">
+                        Ferrari F14 T
+                    </div>
+                </div>
+                <div id="descripcion" class="row">
+                    <div class="col-12">
+                        La era hibrída. 1.6L V6 Turbo.
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="dropdown">
+                            <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Ver más
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="comprar.html">Comprar <i class="fas fa-shopping-cart"></i></a>
+                                <a class="dropdown-item" href="alquilar.html">Alquilar <i class="fas fa-exchange-alt"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 col-lg-8">
+                <img id="imgwilliams" src="~/assets/img/f1will.png">
+            </div>
+            <div id="textoWilliams" class="col-md-12 col-lg-4">
+                <div id="coche" class="row">
+                    <div class="col-12">
+                        Williams FW42
+                    </div>
+                </div>
+                <div id="descripcion" class="row">
+                    <div class="col-12">
+                        8 velocidades. 990 caballos.
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="dropdown">
+                            <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Ver más
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="comprar.html">Comprar <i class="fas fa-shopping-cart"></i></a>
+                                <a class="dropdown-item" href="alquilar.html">Alquilar <i class="fas fa-exchange-alt"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    </section>
+</div>
