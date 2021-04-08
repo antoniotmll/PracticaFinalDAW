@@ -77,3 +77,11 @@ textarea {
 .dropdown {
     text-align: center;
 }
+
+.imagen {
+    transition: transform .6s;
+}
+
+.imagen:hover {
+   transform: scale(1.5);
+}
